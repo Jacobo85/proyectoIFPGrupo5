@@ -1,48 +1,47 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatCardModule} from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { SignupComponent } from './pages/signup/signup.component';
-import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CambioPasswordComponent } from './pages/cambio-password/cambio-password.component';
+import { OlvidastePasswordComponent } from './pages/olvidaste-password/olvidaste-password.component';
+import { AplicacionComponent } from './pages/aplicacion/aplicacion.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatButtonModule} from '@angular/material/button';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { CarouselAplicacionComponent } from './components/carousel-aplicacion/carousel-aplicacion.component';
+import { NavbarAplicacionComponent } from './components/navbar-aplicacion/navbar-aplicacion.component';
+
+const appRoutes:Routes=[
+  {path:'',component:HomeComponent},
+  {path:'olvidaste-pass',component:OlvidastePasswordComponent},
+  {path:'cambio-pass',component:CambioPasswordComponent},
+  {path:'aplicacion',component:AplicacionComponent},
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    SignupComponent,
-    LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CambioPasswordComponent,
+    OlvidastePasswordComponent,
+    AplicacionComponent,
+    CarouselAplicacionComponent,
+    NavbarAplicacionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    HttpClientModule,
     FormsModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync('noop')
   ],
   bootstrap: [AppComponent]
 })

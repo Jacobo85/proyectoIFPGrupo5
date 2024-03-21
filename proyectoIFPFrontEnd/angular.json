@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "proyectoIFPFrontEnd": {
+    "partnerAppFront": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/proyecto-ifpfront-end",
+            "outputPath": "dist/partner-app-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -35,11 +35,14 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/custom-theme.scss",
               "src/styles.css",
-              "./node_modules/bootstrap-grid-only-css/dist/css/bootstrap-grid.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.slim.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -74,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "proyectoIFPFrontEnd:build:production"
+              "buildTarget": "partnerAppFront:build:production"
             },
             "development": {
-              "buildTarget": "proyectoIFPFrontEnd:build:development"
+              "buildTarget": "partnerAppFront:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "proyectoIFPFrontEnd:build"
+            "buildTarget": "partnerAppFront:build"
           }
         },
         "test": {
@@ -101,7 +104,6 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -111,6 +113,6 @@
     }
   },
   "cli": {
-    "analytics": "ea583a9e-d7e6-4fc9-80c1-933ac49c2e8f"
+    "analytics": "dcf8b24c-5bdf-4161-9de0-82fd3ecb7373"
   }
 }
